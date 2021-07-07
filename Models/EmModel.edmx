@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmployeeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotherId" Type="varchar" MaxLength="50" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmException">
+          <Key>
+            <PropertyRef Name="ExceptionId" />
+          </Key>
+          <Property Name="ExceptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ExceptionContent" Type="text" />
+          <Property Name="ExceptionTime" Type="smalldatetime" />
+          <Property Name="ExceptionIp" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="EmLoginLog">
+          <Key>
+            <PropertyRef Name="LoginLogId" />
+          </Key>
+          <Property Name="LoginLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pwd" Type="nvarchar" MaxLength="100" />
+          <Property Name="LoginIp" Type="varchar" MaxLength="30" />
+          <Property Name="LoginTime" Type="smalldatetime" />
+          <Property Name="Result" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EmPower">
+          <Key>
+            <PropertyRef Name="PowerId" />
+          </Key>
+          <Property Name="PowerId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotherId" Type="varchar" MaxLength="50" />
+          <Property Name="PowerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PowerPage" Type="nvarchar" MaxLength="100" />
+          <Property Name="PowerOrder" Type="int" />
+          <Property Name="PowerRemark" Type="text" />
+        </EntityType>
+        <EntityType Name="EmRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleRemark" Type="text" />
+          <Property Name="RolePowerList" Type="text" />
+          <Property Name="ReleaseTime" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="EmUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="varchar" MaxLength="50" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="UserAccount" Type="varchar" MaxLength="50" />
+          <Property Name="UserPwd" Type="varchar" MaxLength="50" />
+          <Property Name="UserRealName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserSex" Type="nvarchar" MaxLength="1" />
+          <Property Name="UserPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPowerList" Type="text" />
+          <Property Name="UserStatus" Type="bit" />
+          <Property Name="ReleaseTime" Type="smalldatetime" />
+        </EntityType>
+        <EntityContainer Name="EmployeeDBModelStoreContainer">
+          <EntitySet Name="EmDepartment" EntityType="Self.EmDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmException" EntityType="Self.EmException" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmLoginLog" EntityType="Self.EmLoginLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmPower" EntityType="Self.EmPower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmRole" EntityType="Self.EmRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmUser" EntityType="Self.EmUser" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotherId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmException">
+          <Key>
+            <PropertyRef Name="ExceptionId" />
+          </Key>
+          <Property Name="ExceptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ExceptionContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionTime" Type="DateTime" Precision="0" />
+          <Property Name="ExceptionIp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmLoginLog">
+          <Key>
+            <PropertyRef Name="LoginLogId" />
+          </Key>
+          <Property Name="LoginLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Pwd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LoginIp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTime" Type="DateTime" Precision="0" />
+          <Property Name="Result" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmPower">
+          <Key>
+            <PropertyRef Name="PowerId" />
+          </Key>
+          <Property Name="PowerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotherId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PowerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PowerPage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PowerOrder" Type="Int32" />
+          <Property Name="PowerRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RolePowerList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReleaseTime" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="EmUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="UserAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRealName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserSex" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPowerList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserStatus" Type="Boolean" />
+          <Property Name="ReleaseTime" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="EmployeeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmDepartment" EntityType="Self.EmDepartment" />
+          <EntitySet Name="EmException" EntityType="Self.EmException" />
+          <EntitySet Name="EmLoginLog" EntityType="Self.EmLoginLog" />
+          <EntitySet Name="EmPower" EntityType="Self.EmPower" />
+          <EntitySet Name="EmRole" EntityType="Self.EmRole" />
+          <EntitySet Name="EmUser" EntityType="Self.EmUser" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmployeeDBModelStoreContainer" CdmEntityContainer="EmployeeDBEntities">
+          <EntitySetMapping Name="EmDepartment">
+            <EntityTypeMapping TypeName="EmployeeDBModel.EmDepartment">
+              <MappingFragment StoreEntitySet="EmDepartment">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="MotherId" ColumnName="MotherId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmException">
+            <EntityTypeMapping TypeName="EmployeeDBModel.EmException">
+              <MappingFragment StoreEntitySet="EmException">
+                <ScalarProperty Name="ExceptionId" ColumnName="ExceptionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ExceptionContent" ColumnName="ExceptionContent" />
+                <ScalarProperty Name="ExceptionTime" ColumnName="ExceptionTime" />
+                <ScalarProperty Name="ExceptionIp" ColumnName="ExceptionIp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmLoginLog">
+            <EntityTypeMapping TypeName="EmployeeDBModel.EmLoginLog">
+              <MappingFragment StoreEntitySet="EmLoginLog">
+                <ScalarProperty Name="LoginLogId" ColumnName="LoginLogId" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="LoginIp" ColumnName="LoginIp" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmPower">
+            <EntityTypeMapping TypeName="EmployeeDBModel.EmPower">
+              <MappingFragment StoreEntitySet="EmPower">
+                <ScalarProperty Name="PowerId" ColumnName="PowerId" />
+                <ScalarProperty Name="MotherId" ColumnName="MotherId" />
+                <ScalarProperty Name="PowerName" ColumnName="PowerName" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="PowerPage" ColumnName="PowerPage" />
+                <ScalarProperty Name="PowerOrder" ColumnName="PowerOrder" />
+                <ScalarProperty Name="PowerRemark" ColumnName="PowerRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmRole">
+            <EntityTypeMapping TypeName="EmployeeDBModel.EmRole">
+              <MappingFragment StoreEntitySet="EmRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleRemark" ColumnName="RoleRemark" />
+                <ScalarProperty Name="RolePowerList" ColumnName="RolePowerList" />
+                <ScalarProperty Name="ReleaseTime" ColumnName="ReleaseTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmUser">
+            <EntityTypeMapping TypeName="EmployeeDBModel.EmUser">
+              <MappingFragment StoreEntitySet="EmUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserAccount" ColumnName="UserAccount" />
+                <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+                <ScalarProperty Name="UserRealName" ColumnName="UserRealName" />
+                <ScalarProperty Name="UserSex" ColumnName="UserSex" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="UserPowerList" ColumnName="UserPowerList" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="ReleaseTime" ColumnName="ReleaseTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

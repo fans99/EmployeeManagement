@@ -1,0 +1,1 @@
+import{e,o as s,c as o,a as r}from"./vendor.59486093.js";const t={},a={class:"h-full"};t.render=function(t,n,i,c,d,l){const f=e("el-empty");return s(),o("div",a,[r(f,{"image-size":300,description:"请在左边菜单进行选择"})])};export default t;
